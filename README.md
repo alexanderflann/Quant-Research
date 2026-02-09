@@ -6,7 +6,7 @@ The aim of this blog is to build a consistently updated portfolio that demonstra
 
 # Contents
 
-1. The Black-Scholes Series
+1. The Black-Scholes Series \
    Articles No.1-5 explore the foundational principles, derivation and intuition of the Black-Scholes model.
 
 # Purpose
