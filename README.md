@@ -9,6 +9,9 @@ The aim of this blog is to build a consistently updated portfolio that demonstra
 1. The Black-Scholes Series \
    Articles No.1-5 explore the foundational principles, derivation and intuition of the Black-Scholes model.
 
+2. The Sharpe Ratio Series \
+   Articles No.6-7 explore  the Sharpe ratio in practice, from evaluating single assets to constructing more efficient, diversified portfolios.
+
 # Purpose
 
 This repository serves as a space to document my independent learning, explore quantitative ideas beyond formal coursework, and develop a clear, reproducible record of modelling work. It reflects my ongoing commitment to building knowledge in quantitative finance and computational methods.
