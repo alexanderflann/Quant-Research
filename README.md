@@ -51,3 +51,5 @@ The aim of this blog is to build a consistently updated portfolio that demonstra
       28. Martingales
       29. Martingales - What Happens When We Stop
       30. Dynamic Programming
+      31. Brownian Motion
+      32. Stochastic Integrals
