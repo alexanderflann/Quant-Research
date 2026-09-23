@@ -96,7 +96,9 @@ price_density(S_ukx, gbm, xlim=[4000, 16000], title="Asset Price Density Under t
 
 Since Monte-Carlo runs multiple paths and we are looking at the stochastic behaviour, the output will always be different, However, one possible output for the code is:
 
-?
+<p  align="center">
+	<img src="https://github.com/alexanderflann/Quant-Research/blob/main/Projects/01.%20Volatility%20Surface%20Modelling%20-%20Black-Scholes%2C%20Dupire%2C%20and%20Heston%20on%20FTSE%20100%20Options/Images/Asset%20Price%20and%20Variance%20Paths%20Graph.png?raw=true" width="1000"/>
+	<img src="https://github.com/alexanderflann/Quant-Research/blob/main/Projects/01.%20Volatility%20Surface%20Modelling%20-%20Black-Scholes%2C%20Dupire%2C%20and%20Heston%20on%20FTSE%20100%20Options/Images/Asset%20Price%20Density%20Graph.png?raw=true" width="500"/>
 
 Note that under the Heston model, the distribution exhibits noticeably heavier skews as the asset price deviates further from the peak, reflecting the model’s ability to generate larger shocks in future extreme market conditions.
 The estimated correlation parameter, $\rho = -0.29$, has negative correlation between asset returns and variance shocks, which is consistent with equity market data.
