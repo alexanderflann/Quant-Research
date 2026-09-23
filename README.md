@@ -6,26 +6,28 @@ The aim of this blog is to build a consistently updated portfolio that demonstra
 
 # Contents
 
+  ## Articles
+
    **The Black-Scholes Series** \
-   _Articles No.1-5 explore the foundational principles, derivation and intuition of the Black-Scholes model._
+   _Articles No.01-05 explore the foundational principles, derivation and intuition of the Black-Scholes model._
    
-      1. Introduction and Derivation of the Black-Scholes Model
-      2. Intuitive Explanation of the Black-Scholes Model (Part 1)
-      3. Justification in the Derivation of the Black-Scholes Model
-      4. Intuitive Explanation of the Black-Scholes Model (Part 2)
-      5. The Geometric Brownian Motion of the Black-Scholes Model
+      01. Introduction and Derivation of the Black-Scholes Model
+      02. Intuitive Explanation of the Black-Scholes Model (Part 1)
+      03. Justification in the Derivation of the Black-Scholes Model
+      04. Intuitive Explanation of the Black-Scholes Model (Part 2)
+      05. The Geometric Brownian Motion of the Black-Scholes Model
 
    **The Sharpe Ratio Series** \
-   _Articles No.6-7 explore the Sharpe ratio in practice, from evaluating single assets to constructing more efficient, diversified portfolios._
+   _Articles No.06-07 explore the Sharpe ratio in practice, from evaluating single assets to constructing more efficient, diversified portfolios._
    
-      6. Introduction to the Sharpe Ratio
-      7. Evaluating Risk Adjusted Performance with the Sharpe Ratio
+      06. Introduction to the Sharpe Ratio
+      07. Evaluating Risk Adjusted Performance with the Sharpe Ratio
 
    **The Probability and Statistics Series** \
-   _Articles No.8-25 is based on probability theory and statistics, exploring how we model uncertainty, learn from data, and make statistically informed decisions._
+   _Articles No.08-25 is based on probability theory and statistics, exploring how we model uncertainty, learn from data, and make statistically informed decisions._
 
-      8. Introduction to Probability Theory
-      9. Combinatorial Analysis - Counting the Possible
+      08. Introduction to Probability Theory
+      09. Combinatorial Analysis - Counting the Possible
       10. Conditional Probability - Learning from New Information
       11. Random Variables and Probability Distributions
       12. Expected Value , Variance, Covariance, and Correlation
@@ -44,7 +46,7 @@ The aim of this blog is to build a consistently updated portfolio that demonstra
       25. Heteroskedasticity
 
    **The Stochastic Processes and Stochastic Calculus Series** \
-   _Articles No.26-30 explore how randomness evolves through time and how optimal decisions can be made in uncertain environments._
+   _Articles No.26-32 explore how randomness evolves through time and how optimal decisions can be made in uncertain environments._
 
       26. An Introduction to Stochastic Processes - Markov Chains
       27. The States of a Markov Chain
@@ -53,3 +55,9 @@ The aim of this blog is to build a consistently updated portfolio that demonstra
       30. Dynamic Programming
       31. Brownian Motion
       32. Stochastic Integrals
+
+  ## Projects
+
+  **Each individual project includes a dedicated README Markdown file detailling motivation, research, code, and results.**
+
+      01. Volatility Surface Modelling - Black-Scholes, Dupire, and Heston on FTSE 100 Options
