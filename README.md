@@ -58,6 +58,6 @@ The aim of this blog is to build a consistently updated portfolio that demonstra
 
   ## Projects
 
-  **Each individual project includes a dedicated README Markdown file detailling motivation, research, code, and results.**
+  **These projects featured here represent a selection, typically pertaining to larger scale quantitative research. Each individual project includes a dedicated README Markdown file detailling motivation, research, code, and results.**
 
       01. Volatility Surface Modelling - Black-Scholes, Dupire, and Heston on FTSE 100 Options
