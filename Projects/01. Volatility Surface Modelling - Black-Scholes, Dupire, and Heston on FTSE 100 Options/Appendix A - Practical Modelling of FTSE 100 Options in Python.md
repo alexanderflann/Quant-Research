@@ -2,8 +2,8 @@
 
 Python is used to implement, compare and analyse the three models, with in-line comments included to clarify each step of the code. The code in this research project was specifically written for the purpose of this project.
 
-	**A.1 Import Modules** \
-	_We must first import some dependencies._
+## A.1 Import Modules
+We must first import some dependencies.
    
 	import os # Import module to use operating system dependent functionality
 	import pandas as pd # Import module to data analyse tabular datasets
@@ -23,8 +23,8 @@ Python is used to implement, compare and analyse the three models, with in-line 
 
 	import seaborn as sns # Statistical visualisation based on matplotlib
 
-	**A.2 Set Up Data** \
-	_Since the dataset is stored in an Excel file, I first load it into Python using pandas and then extract all relevant fields for the modelling process. Afterwards, I extract some variables individually, as these will serve as the core inputs for the models in the remainder of the code._
+## A.2 Set Up Data
+Since the dataset is stored in an Excel file, I first load it into Python using pandas and then extract all relevant fields for the modelling process. Afterwards, I extract some variables individually, as these will serve as the core inputs for the models in the remainder of the code.
    
 	os.chdir('C:\\Alex\\Documents\\2025-2026\\University Lectures\\Research Project') # Set the current working directory
 
@@ -86,8 +86,8 @@ Python is used to implement, compare and analyse the three models, with in-line 
 
 	bid_ask = bid_ask[bid_ask["Type"] == "C"] # Keep only European call options
 
-	**A.3 Implementation of the Black-Scholes Model** \
-	_The Black–Scholes model can be implemented directly by expressing its closed-form formulas in Python and specifying the model parameters as function arguments._
+## A.3 Implementation of the Black-Scholes Model
+The Black–Scholes model can be implemented directly by expressing its closed-form formulas in Python and specifying the model parameters as function arguments.
 
 	def black_scholes(S, E, T, r, q, option_type, sigma): # Black-Scholes model for European Vanilla options
     		d1 = (jnp.log(S / E) + (r - q + 0.5 * sigma**2) * T) / (sigma * jnp.sqrt(T)) # Standard formula for d1
@@ -99,7 +99,7 @@ Python is used to implement, compare and analyse the three models, with in-line 
         	put = E * jnp.exp(-r * T) * norm.cdf(-d2, 0, 1) - S * jnp.exp(-q * T) * norm.cdf(-d1, 0, 1) # Standard formula for put option
         	return put
 
-	_We define the difference ($P_{theory} - P_{actual}$) through a loss function, and calculate the gradient._
+We define the difference ($P_{theory} - P_{actual}$) through a loss function, and calculate the gradient.
 
 	def loss_func(S, E, T, r, sigma_guess, price, q, option_type): # Define the loss function
 
@@ -111,7 +111,7 @@ Python is used to implement, compare and analyse the three models, with in-line 
 
 	loss_grad = grad(loss_func, argnums=4) # Vega, the sensitivity of the Black-Scholes price to volatility
 
-	_Implied volatility is found by solving the pricing error equation via Newton–Raphson iterations, effectively minimising the difference between model and market prices._
+Implied volatility is found by solving the pricing error equation via Newton–Raphson iterations, effectively minimising the difference between model and market prices.
 
 	def solve_for_iv(S, E, T, r, price, q, option_type, sigma_guess = 0.8,
         		N_iter = 20, epsilon = 0.001, verbose = True): # Function to solve for the implied volatility iteratively using the Newton-Raphson method
@@ -140,7 +140,7 @@ Python is used to implement, compare and analyse the three models, with in-line 
 
 		return sigma
 
-	_For each argument, define the input values which are used to calculate the implied volatility for each strike and maturity._
+For each argument, define the input values which are used to calculate the implied volatility for each strike and maturity.
 
 	# Intialise a list for implied volatilities, moneyness (S/E), and time to expiration
 	ivs = []
@@ -161,7 +161,7 @@ Python is used to implement, compare and analyse the three models, with in-line 
     		moneyness.append(S/E)
     		dtes.append(T)
 
-	_Define a function that generates the 3D surface plot, which will be used consistently across all models._
+Define a function that generates the 3D surface plot, which will be used consistently across all models.
 
 	def plot_surface_3d(x, y, z, z_label, title, cmap='viridis'): # Function to create 3D surface plot
 
@@ -195,8 +195,7 @@ Python is used to implement, compare and analyse the three models, with in-line 
     
     		plt.show() # Show the plot
 
-	_With the function defined, we can now call it to visualise the implied volatility surface._
-
+With the function defined, we can now call it to visualise the implied volatility surface.
 
 	# Call function to display implied volatility surface
 	plot_surface_3d(
@@ -207,8 +206,8 @@ Python is used to implement, compare and analyse the three models, with in-line 
     		title='Implied Volatility Surface'
 	)
 
-	**A.4 Implementation of Dupire’s Local Volatility Model** \
-	_The local volatility formula, (17), is defined, and the Black–Scholes model is then used to evaluate the corresponding local volatility._
+## A.4 Implementation of Dupire’s Local Volatility Model
+The local volatility formula, (17), is defined, and the Black–Scholes model is then used to evaluate the corresponding local volatility.
 
 	# Attach implied volatilies from Black-Scholes model and filter calls
 	dupire_data = (
@@ -257,7 +256,7 @@ Python is used to implement, compare and analyse the three models, with in-line 
     		lv = jnp.sqrt(numerator / denominator) # Formula for the local variance
     		lvs.append(float(lv))
 
-	_Call the function to visualise the local volatility surface._
+Call the function to visualise the local volatility surface.
 
 	# Call function to display local volatility surface
 	plot_surface_3d(
@@ -268,8 +267,8 @@ Python is used to implement, compare and analyse the three models, with in-line 
     		title='Local Volatility Surface'
 	)
 
-	**A.5 Implementation of Heston’s Stochastic Volatility Model** \
-	_First, we implement the Heston characteristic function by defining the quantities $d$, $g$, $a$, and $b$, which allow us to compute the required components of the function._
+## A.5 Implementation of Heston’s Stochastic Volatility Model
+First, we implement the Heston characteristic function by defining the quantities $d$, $g$, $a$, and $b$, which allow us to compute the required components of the function.
 
 	def heston_charfunc(phi, S0, v0, kappa, theta, xi, rho, lambd, tau, r): # Function to work out the characteristic function for the Heston model
 
@@ -293,7 +292,7 @@ Python is used to implement, compare and analyse the three models, with in-line 
 
 		return exp1*term2*exp2
 
-	_We begin by defining the integrand as a function, allowing numerical integration methods, such as those provided by scipy, to be applied. The option price is then obtained by integrating this function, using either rectangular integration or the scipy integrate quad function._
+We begin by defining the integrand as a function, allowing numerical integration methods, such as those provided by scipy, to be applied. The option price is then obtained by integrating this function, using either rectangular integration or the scipy integrate quad function.
 
 	def integrand(phi, S0, v0, kappa, theta, xi, rho, lambd, tau, r): # Define integrand as a function
     		args = (S0, v0, kappa, theta, xi, rho, lambd, tau, r) # Label arguments
@@ -324,7 +323,7 @@ Python is used to implement, compare and analyse the three models, with in-line 
 
     		return (S0 - K*np.exp(-r*tau))/2 + real_integral/np.pi
 
-	_We estimate the risk-free rate curve using a parametric approach based on the Nelson Siegel Svensson model, fitted via ordinary least squares._
+We estimate the risk-free rate curve using a parametric approach based on the Nelson Siegel Svensson model, fitted via ordinary least squares.
 	
 	yield_maturities = np.array(risk_free_rate["T"]).astype(float) # Return maturities as a numpy array
 	yields = np.array(risk_free_rate["Rate"]).astype(float)/100 # Return risk free rate as a numpy array
@@ -334,7 +333,7 @@ Python is used to implement, compare and analyse the three models, with in-line 
 	heston_data = bid_ask[bid_ask["Type"] == "C"][["T", "Strike", "Mid"]] # Create Heston dataset using the bid-ask data
 	heston_data["Rate"] = heston_data["T"].apply(curve_fit) # Apply NSS curve to calculate the risk free rate and add it to the Heston data
 
-	_The Heston model features five parameters that are unknown and can be inferred from market data. This is achieved by minimising the squared difference between model and market prices, thereby optimising the calibration objective function._
+The Heston model features five parameters that are unknown and can be inferred from market data. This is achieved by minimising the squared difference between model and market prices, thereby optimising the calibration objective function.
 
 	# Define variables to be used in the optimisation
 	S0 = S
@@ -374,11 +373,11 @@ Python is used to implement, compare and analyse the three models, with in-line 
 
 	heston_data['Heston'] = heston_prices # Add Heston prices to Heston data
 
-	_In essence, once the Heston model prices have been computed, the implied volatility surface is obtained by finding the volatility, $\sigma_I$, that, when inserted into the Black–Scholes formula, minimises the difference between the Heston price and the corresponding Black–Scholes price. Thus:
-\setcounter{equation}{40}
-\begin{equation}
-    \sigma_I (E, T) = \text{Call}_{BS}^{-1} (S_0, r, E, T, \text{Call}_{Heston}(S_0, r, E, T, v_0,  \kappa^{\mathbb{Q}}, \theta^{\mathbb{Q}}, \xi, \rho))
-\end{equation}. We then call the function to visualise the Heston Implied Volatility surface._
+In essence, once the Heston model prices have been computed, the implied volatility surface is obtained by finding the volatility, $\sigma_I$, that, when inserted into the Black–Scholes formula, minimises the difference between the Heston price and the corresponding Black–Scholes price. Thus:
+
+$$ \sigma_I (E, T) = \text{Call}_{BS}^{-1} (S_0, r, E, T, \text{Call}_{Heston}(S_0, r, E, T, v_0,  \kappa^{\mathbb{Q}}, \theta^{\mathbb{Q}}, \xi, \rho))$$
+
+We then call the function to visualise the Heston Implied Volatility surface.
 	
 	# Initialise lists
 	heston_ivs = []
