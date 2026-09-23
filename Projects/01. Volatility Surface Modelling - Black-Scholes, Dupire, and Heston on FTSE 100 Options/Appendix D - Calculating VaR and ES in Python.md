@@ -72,10 +72,13 @@ print(f"Heston VaR (99%): {VaR_h:.4f}, ES: {ES_h:.4f}")
 print(f"GBM    VaR (99%): {VaR_g:.4f}, ES: {ES_g:.4f}")
 ```
 
-Thus, the Monte-Carlo output values for VaR and ES is:
+Thus, a possible Monte-Carlo output for VaR and ES is:
 
-?
+<p  align="center">
+	<img src="https://github.com/alexanderflann/Quant-Research/blob/main/Projects/01.%20Volatility%20Surface%20Modelling%20-%20Black-Scholes%2C%20Dupire%2C%20and%20Heston%20on%20FTSE%20100%20Options/Images/95%20VaR%20Graph.png?raw=true" width="500"/>
+	<img src="https://github.com/alexanderflann/Quant-Research/blob/main/Projects/01.%20Volatility%20Surface%20Modelling%20-%20Black-Scholes%2C%20Dupire%2C%20and%20Heston%20on%20FTSE%20100%20Options/Images/99%20VaR%20Graph.png?raw=true" width="500"/>
+    <img src="https://github.com/alexanderflann/Quant-Research/blob/main/Projects/01.%20Volatility%20Surface%20Modelling%20-%20Black-Scholes%2C%20Dupire%2C%20and%20Heston%20on%20FTSE%20100%20Options/Images/VaR%20ES%20Values%20Output.png?raw=true" width="300"/>
 
-At the $95\%$ confidence level, the Heston model implies, with a one month horizon, a VaR of 4.96\% and an ES of 7.35\%, compared with 3.68\% and 4.54\%, respectively, under the GBM benchmark.
+At the 95\% confidence level, the Heston model implies, with a one month horizon, a VaR of 4.96\% and an ES of 7.35\%, compared with 3.68\% and 4.54\%, respectively, under the GBM benchmark.
 For an initial asset price, under Heston, this translates to a 95\% VaR loss of £480 and an ES of £700, while the GBM benchmark yields a VaR of £360 and an ES of around £440. At the 99\% level, Heston produces a VaR of 8.21\% and ES of 11.73\%, versus 5.16\% and 5.96\% for GBM, which in price terms corresponds to losses of approximately £780 and £1100 under Heston, compared with about £500 and £580 under the GBM benchmark.
 These results reinforce that, for both 95\% and 99\% confidence levels, the Heston model places considerably more probability in the extreme loss region, for possible extreme market events, than the lognormal GBM model.
