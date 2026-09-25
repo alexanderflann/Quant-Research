@@ -2,7 +2,7 @@
 
 This repository contains a collection of research articles, mathematical modelling, and coding projects in quantitative finance. Each piece focuses on a specific concept or technique, presented in a concise and accessible format. Topics include areas which are aligned with my academic work and personal interest.
 
-The aim of this blog is to build a consistently updated portfolio that demonstrates practical engagement with mathematical finance, numerical methods, and computational modelling. Notes are written in Markdown and/or PDF format, with accompanying code where relevant.
+The aim of this blog is to build a consistently updated portfolio that demonstrates practical engagement with mathematical finance, numerical methods, and computational modelling. Notes are written in Markdown and/or PDF format, written in LaTeX, with accompanying code where relevant.
 
 # Contents
 
