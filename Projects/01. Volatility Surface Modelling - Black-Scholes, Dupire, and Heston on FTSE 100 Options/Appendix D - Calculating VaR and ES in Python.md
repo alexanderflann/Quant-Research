@@ -4,7 +4,7 @@ Define the Value at Risk and Expected Shortfall, or Conditional Value at Risk in
 
 ```python
 def var_es(ST, S0, alpha): # Function to calculate the Value at Risk and Expected Shortfall (CVaR)
-    loss = -np.log(ST/S0)
+    loss = -np.log( ST / S0)
     VaR  = np.quantile(loss, alpha)
     ES   = loss[loss >= VaR].mean()
     return VaR, ES
@@ -16,11 +16,11 @@ Let the time horizon be one month such that $T=\frac{22}{252}$.
 # Redefine variables for 1 month horizon
 r_f = risk_free_rate.loc[risk_free_rate["Tenor"] == "1M", "Rate"].iloc[0] / 100
 N_m = 22 # Typically used for 1 month trading
-T_m = N_m/252
+T_m = N_m / 252
 
 # Simulate Heston and GBM benchmark respectively
 S_m, v_m = heston_model_sim(S0, v0, rho, kappa, theta, xi, T_m, N_m, M)
-gbm_m = S0*np.exp((r_f - q - theta/2)*T_m + np.sqrt(theta)*np.sqrt(T_m)*np.random.normal(0,1,M))
+gbm_m = S0 * np.exp( ( r_f - q - theta / 2 ) * T_m + np.sqrt(theta) * np.sqrt(T_m) * np.random.normal(0, 1, M) )
 
 def price_density_with_var(S, gbm, S0, alpha, xlim, title): # Function to display simulations with VaR thresholds
 
