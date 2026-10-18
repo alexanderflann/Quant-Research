@@ -23,21 +23,21 @@ M = 1000 # Number of scenarios/simulations
 def heston_model_sim(S0, v0, rho, kappa, theta, xi, T, N, M): # Function to simulate asset prices and volatility using the Heston model
 
 	# Initialise parameters
-	dt = T/N
-	mu = np.array([0,0])
-	cov = np.array([[1,rho],
-					[rho,1]])
+	dt = T / N
+	mu = np.array( [0,0] )
+	cov = np.array( [ [1, rho],
+					  [rho, 1] ] )
 
       # Arrays for storing prices and variances
-      S = np.full(shape=(N+1,M), fill_value=S0)
-      v = np.full(shape=(N+1,M), fill_value=v0)
+      S = np.full( shape=(N + 1, M), fill_value = S0 )
+      v = np.full( shape=(N + 1, M), fill_value = v0 )
 
       # Sampling correlated brownian motions under the risk-neutral measure
-      Z = np.random.multivariate_normal(mu, cov, (N,M))
+      Z = np.random.multivariate_normal( mu, cov, (N, M) )
 
 	for i in range(1,N+1):
-		S[i] = S[i-1] * np.exp((r_f - q - 0.5*v[i-1])*dt + np.sqrt(v[i-1] * dt) * Z[i-1,:,0])
-		v[i] = np.maximum(v[i-1] + kappa*(theta-v[i-1])*dt + xi*np.sqrt(v[i-1]*dt)*Z[i-1,:,1],0)
+		S[i] = S[i-1] * np.exp( ( r_f - q - 0.5 * v[i-1] ) * dt + np.sqrt( v[i-1] * dt ) * Z[i-1,:,0] )
+		v[i] = np.maximum( v[i-1] + kappa * ( theta - v[i-1] ) * dt + xi * np.sqrt( v[i-1] * dt ) * Z[i-1,:,1],0 )
 
 	return S, v
 ```
@@ -50,7 +50,7 @@ S_ukx, v_ukx = heston_model_sim(S0, v0, rho, kappa, theta, xi, T, N, M)
 
 # Create plot for Monte-Carlo simulation for the Heston model on asset prices and variance
 fig, (ax1, ax2)  = plt.subplots(1, 2, figsize=(12,5))
-time = np.linspace(0,T,N+1)
+time = np.linspace(0, T, N + 1)
 ax1.plot(time,S_ukx)
 ax1.set_title('Heston Model Asset Prices')
 ax1.set_xlabel('Time')
@@ -72,7 +72,7 @@ where $X$ follows a standard normal distribution.
 
 ```python
 # Simulate gbm process at time T, where theta ~ sigma**2
-gbm = S0*np.exp((r_f - q - theta/2)*T + np.sqrt(theta)*np.sqrt(T)*np.random.normal(0,1,M))
+gbm = S0 * np.exp( ( r_f - q - theta / 2 ) * T + np.sqrt(theta) * np.sqrt(T) * np.random.normal(0, 1, M) )
 
 def price_density(S, gbm, xlim, title): # Function to display asset price density at expiry
 	fig, ax = plt.subplots()
